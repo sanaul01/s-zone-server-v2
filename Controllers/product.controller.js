@@ -1,5 +1,7 @@
-const { createPorductService, getPorductService } = require("../Services/product.service")
-
+const { 
+    createPorductService, 
+    getPorductService 
+    } = require("../Services/product.service")
 
 exports.postProduct = async (req, res) => {
     try {
