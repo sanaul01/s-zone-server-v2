@@ -6,7 +6,7 @@ const storeSchema = mongoose.Schema({
     name: {
         type: String,
         trim: true,
-        require: [true, "please provide a name"],
+        required: [true, "please provide a name"],
         lowercase: true,
         enum: {
             values: ["Dahka", "Chattogram", "Rajshahi", "Khulna", "Rangpur", "Sylhet"],
@@ -36,4 +36,4 @@ const storeSchema = mongoose.Schema({
 
 const Store = mongoose.model("Store", storeSchema);
 
-exports = Store;
+module.exports = Store;
