@@ -5,13 +5,13 @@ const { ObjectId } = mongoose.Schema.Types;
 const stockSchema = mongoose.Schema({
     productId: {
         type: ObjectId,
-        require: true,
+        required: true,
         ref: "Product"
     },
 
     name: {
         type: String,
-        require: [true, "please provied a name for this products"],
+        required: [true, "please provied a name for this products"],
         trim: true,
         unique: [true, "name must be unique"],
         lowercase: true,
@@ -35,7 +35,7 @@ const stockSchema = mongoose.Schema({
 
     imageURLs: [{
         type: String,
-        require: true,
+        required: true,
         validate: {
             validator: (value) => {
                 if (!Array.isArray(value)) {
@@ -55,25 +55,25 @@ const stockSchema = mongoose.Schema({
 
     price: {
         type: Number,
-        require: true,
+        required: true,
         min: [0, "price can't be negetive"]
     },
 
     quantity: {
         type: Number,
-        require: true,
+        required: true,
         min: [0, "quantity can't be negetive"]
     },
 
     category: {
         type: String,
-        require: true
+        required: true
     },
 
     brand: {
         name: {
             type: String,
-            require: true,
+            required: true,
         },
         id: {
             type: ObjectId,
@@ -84,7 +84,7 @@ const stockSchema = mongoose.Schema({
 
     status: {
         type: String,
-        require: true,
+        required: true,
         enum: {
             value: ["in-stock", "out-of-stock", "discontinue"],
             message: "status can not be {VALUE}"
@@ -95,7 +95,7 @@ const stockSchema = mongoose.Schema({
         name: {
             type: String,
             trim: true,
-            require: [true, "please provide a store name"],
+            required: [true, "please provide a store name"],
             lowercase: true,
             enum: {
                 values: ["Dahka", "Chattogram", "Rajshahi", "Khulna", "Rangpur", "Sylhet"],
@@ -104,7 +104,7 @@ const stockSchema = mongoose.Schema({
         },
         id: {
             type: ObjectId,
-            require: true,
+            required: true,
             ref: "Store"
         }
     },
@@ -113,7 +113,7 @@ const stockSchema = mongoose.Schema({
         name: {
             type: String,
             trim: true,
-            require: [true, "plase provide a supplier name"]
+            required: [true, "plase provide a supplier name"]
         },
         id: {
             type: ObjectId,

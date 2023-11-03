@@ -14,12 +14,12 @@ const productSchema = mongoose.Schema({
 
     description: {
         type: String,
-        require: true
+        required: true
     },
 
     unit: {
         type: String,
-        require: true,
+        required: true,
         enum: {
             values: ["kg", "litre", "pcs", "bag"],
             message: "Unit value can't be {VALUE}, must be kg/ litre/ pcs/ bag"
@@ -28,7 +28,7 @@ const productSchema = mongoose.Schema({
 
     imageURLs: [{
         type: String,
-        require: true,
+        required: true,
         validate: {
             validator: (value) => {
                 if (!Array.isArray(value)) {
@@ -48,18 +48,18 @@ const productSchema = mongoose.Schema({
 
     category: {
         type: String,
-        require: true
+        required: true
     },
 
     brand: {
         name: {
             type: String,
-            require: true,
+            required: true,
         },
         id: {
             type: ObjectId,
             ref: "Brand",
-            require: true
+            required: true
         }
     }
 }, {
