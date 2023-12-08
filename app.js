@@ -9,6 +9,7 @@ const productRouter = require("./router/product.route");
 const brandRouter = require("./router/brand.route");
 const categoryRouter = require("./router/categories.route");
 const storeRouter = require("./router/store.route")
+const stockRouter = require("./router/stock.router")
 
 app.get("/", (req, res,) => {
     console.log("welcome to my server")
@@ -18,5 +19,6 @@ app.use('/server/v2/category', categoryRouter);
 app.use('/server/v2/product', productRouter);
 app.use('/server/v2/brand', brandRouter);
 app.use('/server/v2/store', storeRouter);
+app.use('/server/v2/stock', stockRouter);
 
 module.exports = app;

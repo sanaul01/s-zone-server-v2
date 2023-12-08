@@ -13,7 +13,7 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: [true, "please provied a name for this products"],
         trim: true,
-        unique: [true, "name must be unique"],
+        // unique: [true, "name must be unique"],
         lowercase: true,
         minLength: [3, "Name must be at least 3 character"],
         maxLength: [100, "Name is too larger"]
@@ -36,21 +36,7 @@ const stockSchema = mongoose.Schema({
     imageURLs: [{
         type: String,
         required: true,
-        validate: {
-            validator: (value) => {
-                if (!Array.isArray(value)) {
-                    return false;
-                };
-                let isValid = true;
-                value.forEach(url => {
-                    if (!validator.isURL(url)) {
-                        isValid = false;
-                    }
-                })
-                return isValid;
-            },
-            message: "please provide valid image url"
-        }
+        validate:[ validator.isURL, "Please provide a valid url"]
     }],
 
     price: {
@@ -86,7 +72,7 @@ const stockSchema = mongoose.Schema({
         type: String,
         required: true,
         enum: {
-            value: ["in-stock", "out-of-stock", "discontinue"],
+            values: ["in-stock", "out-of-stock", "discontinue"],
             message: "status can not be {VALUE}"
         }
     },
@@ -119,6 +105,12 @@ const stockSchema = mongoose.Schema({
             type: ObjectId,
             ref: "Supplier"
         }
+    },
+
+    sellCount: {
+        type: Number,
+        default: 0,
+        min: 0
     }
 }, {
     timestamps: true
